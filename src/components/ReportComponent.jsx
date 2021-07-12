@@ -4,11 +4,8 @@ import DataContext from '../data/DataContext';
 import { useContext } from 'react';
 import './ReportComponent.css';
 
-const ReportComponent = (props) => {
+const ReportComponent = ({ formatNumber }) => {
   const { income, expense } = useContext(DataContext);
-  const formatNumber = (num) => {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-  };
   return (
     <div>
       <h4>ยอดคงเหลือ (บาท)</h4>
@@ -27,6 +24,8 @@ const ReportComponent = (props) => {
   );
 };
 
-ReportComponent.propTypes = {};
+ReportComponent.propTypes = {
+  formatNumber: PropTypes.func,
+};
 
 export default ReportComponent;

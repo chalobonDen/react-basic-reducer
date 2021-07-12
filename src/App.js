@@ -12,6 +12,10 @@ function App() {
   const [reportIncome, setReportIncome] = useState(0);
   const [reportExpense, setReportExpense] = useState(0);
 
+  const formatNumber = (num) => {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+  };
+
   const onAddNewItem = (newItem) => {
     setItems((preveItem) => {
       return [newItem, ...preveItem];
@@ -52,9 +56,9 @@ function App() {
     >
       <div className="container">
         <h1 style={design}>แอพบัญชีรายรับ - รายจ่าย</h1>
-        {showReport && <ReportComponent />}
+        {showReport && <ReportComponent formatNumber={formatNumber} />}
         <FormComponent onAddItem={onAddNewItem} />
-        <Transaction data={items} />
+        <Transaction data={items} formatNumber={formatNumber} />
 
         <div>
           <h1>{result}</h1>

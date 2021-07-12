@@ -63,6 +63,8 @@ const FormComponent = ({ onAddItem }) => {
   );
 };
 
-FormComponent.propTypes = {};
+FormComponent.propTypes = {
+  onAddItem: PropTypes.func,
+};
 
 export default FormComponent;
